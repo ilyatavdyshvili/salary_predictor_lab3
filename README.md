@@ -1,5 +1,10 @@
 ## Лабораторная работа №2. Вариант 14 "Предсказание зарплаты"
 
+### Клонирование проекта
+```bash
+git clone <REPO_URL>
+cd quality-grading-ai-lab2-main
+```
 ### Подготовка
 
 Создаем в корне проекта файл .env, со следующим содержимым:
@@ -25,7 +30,7 @@ poetry shell
 
 ---
 
-### 2. MinIO
+### 2. Запуск MinIO
 
 ```
 docker-compose up -d
@@ -38,17 +43,14 @@ docker-compose up -d
 
 ---
 
-### 3. DVC
+### 3. Настройка DVC remote (если требуется)
+
+Убедитесь, что remote настроен:
 
 ```
-dvc init
-git commit -m "init"
+dvc remote list
 ```
-
----
-
-### 4. Remote
-
+Если нужно:
 ```
 dvc remote add -d myremote s3://datasets
 dvc remote modify myremote endpointurl http://localhost:9000
@@ -58,51 +60,27 @@ dvc remote modify myremote secret_access_key minioadmin
 
 ---
 
-### 5. Данные
+### 4. Загрузка данных
 
 ```
-dvc add data/hr_data.csv
-git add .
-git commit -m "data v1"
-dvc push
+dvc pull
 ```
-
+После этого появится файл:
+```data/hr_data.csv```
 ---
 
-### 6. Запуск
+### 5. Запуск
 
 ```
 python -m src.presentation.cli
 ```
-
+Пример работы:
+```
+Введите должность: Data Scientist
+Предсказанная зарплата: 82500.0
+```
 ---
 
-### 7. Обновление данных
 
-Изменить зарплаты → затем:
-
-```
-dvc add data/hr_data.csv
-git commit -am "data v2"
-dvc push
-```
-
----
-
-### 8. Проверка версий
-
-Возвращаемся к версии "data v1"
-```
-git log --oneline
-git checkout <hash_old_commit>
-dvc checkout
-python -m src.presentation.cli
-```
-После проверки первичной версии переходим к "data v2" и перепроверяем снова
-```
-git checkout main
-dvc checkout
-python -m src.presentation.cli
-```
 
 
