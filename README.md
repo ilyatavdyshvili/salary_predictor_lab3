@@ -13,7 +13,7 @@ S3_BUCKET=datasets
 ```
 dvc pull
 ```
-```
+
 
 ### 1. Установка
 
