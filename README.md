@@ -7,7 +7,7 @@ cd quality-grading-ai-lab2-main
 ```
 ### Подготовка
 
-Создаем в корне проекта файл .env, со следующим содержимым:
+Создаем в корне проекта файл ```.env```, со следующим содержимым:
 ```
 S3_ENDPOINT=http://localhost:9000
 S3_ACCESS_KEY=minioadmin
