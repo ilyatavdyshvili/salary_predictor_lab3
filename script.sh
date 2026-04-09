@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-
+exec > /dev/null 2>&1
 # === CONFIG ===
 DATA_DIR="data"
 CSV_FILE="$DATA_DIR/hr_data.csv"
