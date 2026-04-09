@@ -9,6 +9,7 @@ class SalaryPredictionService:
         self.data_sync_service = data_sync_service
 
     def predict(self, features: dict) -> float:
+        # синхронизация данных через DVC
         self.data_sync_service.sync_dataset()
 
         return self.predictor.predict(features)

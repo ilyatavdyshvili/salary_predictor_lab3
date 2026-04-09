@@ -12,17 +12,5 @@ services:
     volumes:
       - minio_data:/data
 
-  mc:
-    image: minio/mc
-    depends_on:
-      - minio
-    entrypoint: >
-      /bin/sh -c "
-      sleep 5;
-      mc alias set myminio http://minio:9000 minioadmin minioadmin;
-      mc mb myminio/datasets || true;
-      exit 0;
-      "
-
 volumes:
   minio_data:
