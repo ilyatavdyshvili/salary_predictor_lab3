@@ -57,7 +57,9 @@ dvc remote modify myremote secret_access_key minioadmin
 
 ### 4. Загрузка данных
 Для начала запускаем:
-```./script.sh```
+```
+./script.sh
+```
 Скачиваем датасет:
 ```
 dvc pull
