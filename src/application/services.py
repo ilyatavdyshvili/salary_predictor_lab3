@@ -2,7 +2,7 @@ import subprocess
 
 
 class DataSyncService:
-    def sync(self):
+    def sync_dataset(self):
         print("[Sync] Running dvc pull...")  # можно оставить или убрать
 
         subprocess.run(
