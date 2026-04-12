@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 set -e
-exec > /dev/null 2>&1
+
 # === CONFIG ===
 DATA_DIR="data"
 CSV_FILE="$DATA_DIR/hr_data.csv"
 
-# === 1. Wait a bit for environment (optional) ===
-echo "Waiting for services..."
-sleep 3
+echo "=== START SCRIPT ==="
 
-# === 2. Create dataset directory ===
+# === 1. Wait for MinIO ===
+echo "Waiting for MinIO..."
+sleep 5
+
+# === 2. Create data directory ===
 mkdir -p ${DATA_DIR}
 
-# === 3. Create CSV dataset ===
+# === 3. Create dataset ===
+echo "Creating dataset..."
+
 cat > ${CSV_FILE} << EOF
 experience,city,position,skills,salary
 1,Riga,Junior Python,"python,sql",1300
@@ -21,28 +25,50 @@ experience,city,position,skills,salary
 2,London,Data Analyst,"python,pandas,sql",2700
 7,London,ML Engineer,"python,tensorflow,ml",6000
 4,Riga,Backend Developer,"python,fastapi,postgres",3000
-8,Moscow,SQLDeveloper,"sql,data analysis",9999
-9,Kazan,QA Developer,"android, java",100000
 EOF
 
 echo "Dataset created at ${CSV_FILE}"
 
-# === 4. Add file to DVC ===
-echo "Adding file to DVC..."
+# === 4. Add to DVC ===
+echo "Adding dataset to DVC..."
 dvc add ${CSV_FILE}
 
-# === 5. Stage DVC metadata ===
+# === 5. Git commit (если есть изменения) ===
 git add ${CSV_FILE}.dvc .gitignore
+git commit -m "Add dataset via script" || echo "Nothing to commit"
 
-# === 6. Commit changes ===
-git commit -m "Add dataset via automation script" || echo "Nothing to commit"
-
-# === 7. Push to DVC remote ===
-echo "Pushing data to DVC remote..."
+# === 6. Push to DVC remote (MinIO) ===
+echo "Pushing dataset to DVC remote..."
 dvc push
 
-# === 8. Remove local CSV (simulate clean environment) ===
-rm -f ${CSV_FILE}
-echo "Local dataset removed."
+# === 7. Install mc (MinIO client) if not exists ===
+if ! command -v mc &> /dev/null
+then
+    echo "Installing MinIO client (mc)..."
+    curl https://dl.min.io/client/mc/release/linux-amd64/mc -o mc
+    chmod +x mc
+    sudo mv mc /usr/local/bin/
+fi
 
-echo "Done. Now anyone can run: dvc pull"
+# === 8. Upload file as plain object (для boto3) ===
+echo "Uploading file to MinIO as plain object..."
+
+mc alias set local http://localhost:9000 minioadmin minioadmin
+
+# создаём bucket если нет
+mc mb local/datasets || true
+
+mc cp ${CSV_FILE} local/datasets/hr_data.csv
+
+echo "File uploaded as datasets/hr_data.csv"
+
+# === 9. Remove local file ===
+echo "Removing local dataset..."
+rm -f ${CSV_FILE}
+
+echo "Local file removed"
+
+# === DONE ===
+echo "=== DONE ==="
+echo "Now run:"
+echo "python -m src.presentation.cli"
