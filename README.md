@@ -3,7 +3,7 @@
 ### Клонирование проекта
 ```bash
 git clone https://github.com/ilyatavdyshvili/quality-grading-ai-lab2.git
-cd quality-grading-ai-lab2-main
+cd quality-grading-ai-lab2
 ```
 ### Подготовка
 
