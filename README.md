@@ -75,13 +75,13 @@ python -m src.presentation.cli
 ```
 Пример работы:
 ```
-Введите должность: Data Scientist
-Предсказанная зарплата: 82500.0
+Введите должность: Junior Python
+Предсказанная зарплата: 1300.0
 ```
 ---
 Вносим изменения в датасет
 ```
-echo '10,Paris,DevOps Engineer,"python,docker",5000' >> data/hr_data.csv
+echo '8,Paris,DevOps Engineer,"python,docker",5000' >> data/hr_data.csv
 ```
 Фиксируем текущую версию
 ```
