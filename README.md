@@ -71,7 +71,7 @@ dvc pull data/hr_data.csv
 ### 5. Обучаем модель
 
 ```
-python -m scirpts.train_model
+python scripts/train_model.py
 ```
 ### 6. Запускаем API
 ```
