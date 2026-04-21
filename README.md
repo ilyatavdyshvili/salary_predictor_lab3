@@ -1,9 +1,9 @@
-## Лабораторная работа №2. Вариант 14 "Предсказание зарплаты"
+## Лабораторная работа №3. Вариант 14 "Предсказание зарплаты"
 
 ### Клонирование проекта
 ```bash
-git clone https://github.com/ilyatavdyshvili/quality-grading-ai-lab2.git
-cd quality-grading-ai-lab2
+git clone https://github.com/ilyatavdyshvili/salary_predictor_lab3
+cd salary_predictor_lab3
 ```
 ### Подготовка
 
@@ -68,42 +68,14 @@ dvc pull
 ```data/hr_data.csv```
 ---
 
-### 5. Запуск
+### 5. Обучаем модель
 
 ```
-python -m src.presentation.cli
+python -m scirpts.train_model
 ```
-Пример работы:
+### 6. Запускаем API
 ```
-Введите должность: Junior Python
-Предсказанная зарплата: 1300.0
+poetry run uvicorn src.presentation.api:app --reload
 ```
----
-Вносим изменения в датасет
-```
-echo '8,Paris,DevOps Engineer,"python,docker",5000' >> data/hr_data.csv
-```
-Фиксируем текущую версию
-```
-dvc add data/hr_data.csv
-git add data/hr_data.csv.dvc
-git commit -m "Обновление датасета"
-dvc push
-```
-Удаляем файл
-```
-rm data/hr_data.csv
-```
-Подтягиваем новую версию
-```
-dvc pull
-```
-Запускаем cli.py для проверки
-```
-python -m src.presentation.cli
-```
-Пример работы:
-```
-Введите должность: DevOps Engineer
-Предсказанная зарплата: 5000.0
-```
+Переходим в браузер: ```http://127.0.0.1:8000/docs```
+
