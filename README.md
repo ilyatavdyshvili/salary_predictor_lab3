@@ -62,7 +62,7 @@ dvc remote modify myremote secret_access_key minioadmin
 ```
 Скачиваем датасет:
 ```
-dvc pull
+dvc pull data/hr_data.csv
 ```
 После этого появится файл:
 ```data/hr_data.csv```
@@ -78,4 +78,63 @@ python -m scirpts.train_model
 poetry run uvicorn src.presentation.api:app --reload
 ```
 Переходим в браузер: ```http://127.0.0.1:8000/docs```
-
+Проверка работы модели:
+1. Базовые (из датасета):
+```
+{
+  "experience": 1,
+  "city": "Riga",
+  "position": "Junior Python"
+}
+```
+```
+{
+  "experience": 1,
+  "city": "Riga",
+  "position": "Junior Python"
+}
+```
+```
+{
+  "experience": 3,
+  "city": "Riga",
+  "position": "Python Developer"
+}
+```
+2. Новые комбинации
+```
+{
+  "experience": 6,
+  "city": "Berlin",
+  "position": "Senior Python"
+}
+```
+```
+{
+  "experience": 2,
+  "city": "London",
+  "position": "Backend Developer"
+}
+```
+```
+{
+  "experience": 4,
+  "city": "Riga",
+  "position": "ML Engineer"
+}
+```
+3. Неизвестные данные:
+```
+{
+  "experience": 10,
+  "city": "Paris",
+  "position": "DevOps Engineer"
+}
+```
+```
+{
+  "experience": 0,
+  "city": "Riga",
+  "position": "Intern"
+}
+```
