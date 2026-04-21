@@ -89,9 +89,9 @@ poetry run uvicorn src.presentation.api:app --reload
 ```
 ```
 {
-  "experience": 1,
-  "city": "Riga",
-  "position": "Junior Python"
+  "experience": 7,
+  "city": "London",
+  "position": "ML Engineer"
 }
 ```
 ```
