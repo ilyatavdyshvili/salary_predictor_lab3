@@ -79,7 +79,7 @@ poetry run uvicorn src.presentation.api:app --reload
 ```
 Переходим в браузер: ```http://127.0.0.1:8000/docs```
 ### 7. Проверка работы модели:
-## 1. Базовые (из датасета):
+## 7.1. Базовые (из датасета):
 ```
 {
   "experience": 1,
@@ -104,7 +104,7 @@ poetry run uvicorn src.presentation.api:app --reload
 }
 ```
 
-## 2. Новые комбинации
+## 7.2. Новые комбинации
 ```
 {
   "experience": 6,
@@ -129,7 +129,7 @@ poetry run uvicorn src.presentation.api:app --reload
 }
 ```
 
-## 3. Неизвестные данные:
+## 7.3. Неизвестные данные:
 ```
 {
   "experience": 10,
