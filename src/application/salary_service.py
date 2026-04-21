@@ -10,9 +10,9 @@ class SalaryPredictionService:
 
         
         self.data_sync_service.sync_dataset(
-            remote_path="hr_data.csv",       # файл в MinIO
-            local_path="data/hr_data.csv"    # локальный путь
-        )
+	    remote_path="salary_model.onnx",
+	    local_path="models/salary_model.onnx"
+	)
 
     def predict(self, features: dict) -> float:
         return self.predictor.predict(features)
