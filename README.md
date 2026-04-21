@@ -87,7 +87,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Junior Python"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 2627
+
 ```
 {
   "experience": 7,
@@ -95,7 +95,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "ML Engineer"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 4699
+
 ```
 {
   "experience": 3,
@@ -103,7 +103,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Python Developer"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 3090
+
 ## 2. Новые комбинации
 ```
 {
@@ -112,7 +112,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Senior Python"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 4613
+
 ```
 {
   "experience": 2,
@@ -120,7 +120,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Backend Developer"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 2570
+
 ```
 {
   "experience": 4,
@@ -128,7 +128,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "ML Engineer"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 3289
+
 ## 3. Неизвестные данные:
 ```
 {
@@ -137,7 +137,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "DevOps Engineer"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 4896
+
 ```
 {
   "experience": 0,
@@ -145,4 +145,4 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Intern"
 }
 ```
-Ожидаемый вывод: "predicted_salary": 2627
+
