@@ -1,0 +1,5 @@
+outs:
+- md5: fd505a8172a078ed2179b43360a1c825
+  size: 26020
+  hash: md5
+  path: salary_model.onnx
