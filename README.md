@@ -78,8 +78,8 @@ python -m scirpts.train_model
 poetry run uvicorn src.presentation.api:app --reload
 ```
 Переходим в браузер: ```http://127.0.0.1:8000/docs```
-Проверка работы модели:
-1. Базовые (из датасета):
+### 7. Проверка работы модели:
+## 1. Базовые (из датасета):
 ```
 {
   "experience": 1,
@@ -87,6 +87,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Junior Python"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 2627
 ```
 {
   "experience": 7,
@@ -94,6 +95,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "ML Engineer"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 4699
 ```
 {
   "experience": 3,
@@ -101,7 +103,8 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Python Developer"
 }
 ```
-2. Новые комбинации
+Ожидаемый вывод: "predicted_salary": 3090
+## 2. Новые комбинации
 ```
 {
   "experience": 6,
@@ -109,6 +112,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Senior Python"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 4613
 ```
 {
   "experience": 2,
@@ -116,6 +120,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Backend Developer"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 2570
 ```
 {
   "experience": 4,
@@ -123,7 +128,8 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "ML Engineer"
 }
 ```
-3. Неизвестные данные:
+Ожидаемый вывод: "predicted_salary": 3289
+## 3. Неизвестные данные:
 ```
 {
   "experience": 10,
@@ -131,6 +137,7 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "DevOps Engineer"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 4896
 ```
 {
   "experience": 0,
@@ -138,3 +145,4 @@ poetry run uvicorn src.presentation.api:app --reload
   "position": "Intern"
 }
 ```
+Ожидаемый вывод: "predicted_salary": 2627
